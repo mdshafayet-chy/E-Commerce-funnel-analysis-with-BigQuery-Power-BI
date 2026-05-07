@@ -83,7 +83,7 @@ The dashboard contains **3 pages**, each answering a different analytical questi
 > **KPIs:** Overall CVR · Total Orders · AOV · Cart Abandonment Rate · Total Product Views  
 > **Visuals:** Purchase funnel by user count · Stage-to-stage CVR bar chart
 
-![Funnel Overview](dashboard_screenshots/funnel_overview.jpg)
+![Funnel Overview](dashboard_screenshots/funnel_overview.png)
 
 ---
 
@@ -91,7 +91,7 @@ The dashboard contains **3 pages**, each answering a different analytical questi
 > **KPIs:** Best Device CVR · Best Traffic Source CVR · Best Revenue Source · Best AOV Source · Top Country by Revenue  
 > **Visuals:** CVR by device · Full funnel by device · CVR / Revenue / AOV by traffic source · Top 15 countries table
 
-![Segment Analysis](dashboard_screenshots/segment_analysis.jpg)
+![Segment Analysis](dashboard_screenshots/segment_analysis.png)
 
 ---
 
@@ -99,7 +99,7 @@ The dashboard contains **3 pages**, each answering a different analytical questi
 > **KPIs:** Best Month CVR · Worst Month CVR · Peak Purchase Month · Median & Avg Time to Purchase  
 > **Visuals:** CVR line chart · Purchase volume by month · Stepwise CVR trends · Monthly funnel performance table
 
-![Monthly Performance](dashboard_screenshots/monthly_performance_and_trends.jpg)
+![Monthly Performance](dashboard_screenshots/monthly_performance_and_trends.png)
 
 ---
 
