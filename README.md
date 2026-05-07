@@ -185,3 +185,48 @@ All 11 queries are standalone — each runs independently in BigQuery and is imp
 ### Step 1 — BigQuery
 
 Open BigQuery and run the SQL files from the `sql/` folder. The source dataset is:
+
+
+All queries use `CAST(MAX(event_name = '...') AS INT64)` for user-level funnel pivoting and `SAFE_DIVIDE()` for null-safe CVR calculations.
+
+### Step 2 — Power BI Connection
+
+1. Open **Power BI Desktop**
+2. **Get Data** → **Google BigQuery**
+3. Expand **Advanced Options** → paste the SQL query into the **SQL Statement** field
+4. Authenticate with your Google account (requires BigQuery read access to the project)
+5. Repeat for each of the 11 queries — each loads as a separate table
+6. Build visuals as per the `.pbix` file in `powerbi/`
+
+### Step 3 — Dashboard Navigation
+
+| Page | What It Shows |
+|---|---|
+| **Funnel Overview** | Total users per stage, stage-to-stage CVR, cart abandonment KPI |
+| **Segment Analysis** | CVR/Revenue/AOV by device, traffic source, and country; performance tables |
+| **Monthly Performance & Trends** | Month-over-month CVR, purchase volume, stepwise stage rates, time to purchase KPIs |
+
+---
+
+## 💡 Business Recommendations
+
+| Finding | Recommended Action |
+|---|---|
+| View → Cart drop at 20% | A/B test product page CTAs, improve image quality, add social proof and trust badges |
+| Shipping → Payment drop at 59% | Simplify payment form, add more payment methods (PayPal, Apple Pay), reduce required fields |
+| Cart abandonment at 64.77% | Implement email cart recovery sequences and exit-intent popups with incentive |
+| Referral highest CVR (8.06%) | Invest in affiliate and partner referral programs |
+| Mobile leads in CVR (7.46%) | Prioritize mobile-first checkout UX and fast page load |
+| January 2021 CVR drop to 5.45% | Plan January-specific promotions to counter post-holiday purchase fatigue |
+
+---
+
+## 👤 Author
+
+**Md Shafayet Hossen Chowdhury**  
+Data Analyst | SQL · Power BI · BigQuery  
+📍 Potsdam, Germany  
+🔗 [LinkedIn](https://www.linkedin.com/in/mdshafayet/)
+
+---
+
