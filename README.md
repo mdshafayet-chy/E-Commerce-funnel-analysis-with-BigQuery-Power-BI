@@ -2,22 +2,27 @@
 
 > **End-to-end purchase funnel analytics project** built with **Google BigQuery (GA4 data)** and **Power BI** — covering conversion drop-offs, device & traffic segment behavior, geographic revenue distribution, and 3-month performance trends.
 
-***
+---
 
-## 📊 Dashboard Preview
+## Table of Contents
+- [Project Overview](#-project-overview)
+- [Business Questions](#-business-questions)
+- [Key Findings](#-key-findings)
+- [Dashboard Screenshots](#-dashboard-screenshots)
+  - [Page 1 — Funnel Overview](#page-1--funnel-overview)
+  - [Page 2 — Segment Analysis](#page-2--segment-analysis)
+  - [Page 3 — Monthly Performance & Trends](#page-3--monthly-performance--trends)
+- [Project Architecture](#-project-architecture)
+- [Tech Stack](#-tech-stack)
+- [SQL Queries](#-sql-queries)
+- [How to Reproduce](#-how-to-reproduce)
+- [Business Recommendations](#-business-recommendations)
+- [Author](#-author)
+- [License](#-license)
 
-### Funnel Overview
+---
 
-
-### Segment Analysis
-
-
-### Monthly Performance & Trends
-
-
-***
-
-## 📌 Project Summary
+## 📌 Project Overview
 
 | Item | Detail |
 |---|---|
@@ -29,9 +34,9 @@
 | **SQL Queries** | 11 BigQuery SQL queries (see `sql/` folder) |
 | **Dashboard Pages** | Funnel Overview · Segment Analysis · Monthly Performance & Trends |
 
-***
+---
 
-## 🎯 Business Questions Answered
+## 🎯 Business Questions
 
 1. Where do users drop off in the purchase funnel — and at which stage is the biggest leak?
 2. Which device type converts best, and how does it perform at each funnel stage?
@@ -40,7 +45,7 @@
 5. How did funnel performance change month over month?
 6. How long does a typical buyer take to make a purchase decision?
 
-***
+---
 
 ## 🔍 Key Findings
 
@@ -66,38 +71,68 @@
 - **Median time to purchase: 39 minutes** — most buyers decide quickly after first view
 - **Average time to purchase: 99 hours (~4 days)** — a small deliberate-buyer segment pulls the average up significantly
 
-***
+---
+
+## 📊 Dashboard Screenshots
+
+The dashboard contains **3 pages**, each answering a different analytical question. Screenshots are stored in the `dashboard_screenshots/` folder.
+
+---
+
+### Page 1 — Funnel Overview
+> **KPIs:** Overall CVR · Total Orders · AOV · Cart Abandonment Rate · Total Product Views  
+> **Visuals:** Purchase funnel by user count · Stage-to-stage CVR bar chart
+
+![Funnel Overview](dashboard_screenshots/funnel_overview.jpg)
+
+---
+
+### Page 2 — Segment Analysis
+> **KPIs:** Best Device CVR · Best Traffic Source CVR · Best Revenue Source · Best AOV Source · Top Country by Revenue  
+> **Visuals:** CVR by device · Full funnel by device · CVR / Revenue / AOV by traffic source · Top 15 countries table
+
+![Segment Analysis](dashboard_screenshots/segment_analysis.jpg)
+
+---
+
+### Page 3 — Monthly Performance & Trends
+> **KPIs:** Best Month CVR · Worst Month CVR · Peak Purchase Month · Median & Avg Time to Purchase  
+> **Visuals:** CVR line chart · Purchase volume by month · Stepwise CVR trends · Monthly funnel performance table
+
+![Monthly Performance](dashboard_screenshots/monthly_performance_and_trends.jpg)
+
+---
 
 ## 🏗️ Project Architecture
 
-```
+```text
 ecommerce-funnel-analysis/
 │
 ├── sql/
-│   ├── 01_funnel_summary.sql               # Total users at each funnel stage
-│   ├── 02_funnel_conversion_rate.sql       # Stage-to-stage CVR (overall)
-│   ├── 03_overall_aov.sql                  # Overall Average Order Value
-│   ├── 04_device_funnel_breakdown.sql      # Full funnel CVR split by device
-│   ├── 05_traffic_source_performance.sql   # CVR, Revenue, AOV by traffic source
-│   ├── 06_aov_by_country.sql               # AOV ranked by country
-│   ├── 07_countries_funnel_performance.sql # Revenue, Orders, CVR by country
-│   ├── 08_monthly_funnel_performance.sql   # Stage volumes month over month
-│   ├── 09_monthly_conversion_rates.sql     # Stage-to-stage CVR month over month
-│   ├── 10_time_to_purchase_kpi.sql         # Avg & median time to purchase (KPI)
-│   └── 11_time_to_purchase_summary.sql     # Per-user time to purchase detail
+│   ├── 01_funnel_summary.sql
+│   ├── 02_funnel_conversion_rate.sql
+│   ├── 03_overall_aov.sql
+│   ├── 04_device_funnel_breakdown.sql
+│   ├── 05_traffic_source_performance.sql
+│   ├── 06_aov_by_country.sql
+│   ├── 07_countries_funnel_performance.sql
+│   ├── 08_monthly_funnel_performance.sql
+│   ├── 09_monthly_conversion_rates.sql
+│   ├── 10_time_to_purchase_kpi.sql
+│   └── 11_time_to_purchase_summary.sql
 │
-├── screenshots/
+├── dashboard_screenshots/
 │   ├── funnel_overview.jpg
 │   ├── segment_analysis.jpg
 │   └── monthly_performance_and_trends.jpg
 │
 ├── powerbi/
-│   └── funnel_analysis.pbix                # Power BI report file
+│   └── funnel_analysis.pbix
 │
 └── README.md
 ```
 
-***
+---
 
 ## 🛠️ Tech Stack
 
@@ -109,11 +144,11 @@ ecommerce-funnel-analysis/
 | **Visualization** | Power BI Desktop |
 | **Connection** | BigQuery Advanced Connector → SQL Statement mode |
 
-***
+---
 
-## 📋 SQL Queries Overview
+## 📋 SQL Queries
 
-All 11 queries are standalone — each one runs independently in BigQuery and is imported directly into Power BI via the Advanced SQL Statement option.
+All 11 queries are standalone — each runs independently in BigQuery and is imported directly into Power BI via the Advanced SQL Statement option.
 
 | # | File | Purpose | Power BI Page |
 |---|---|---|---|
@@ -134,7 +169,7 @@ All 11 queries are standalone — each one runs independently in BigQuery and is
 | Column | Description |
 |---|---|
 | `user_pseudo_id` | Anonymous user identifier |
-| `event_name` | Funnel event (`view_item`, `add_to_cart`, `begin_checkout`, `add_shipping_info`, `add_payment_info`, `purchase`) |
+| `event_name` | Funnel event: `view_item`, `add_to_cart`, `begin_checkout`, `add_shipping_info`, `add_payment_info`, `purchase` |
 | `event_date` | Date string in `YYYYMMDD` format |
 | `event_timestamp` | Microsecond timestamp — used for time-to-purchase calculations |
 | `revenue_usd` | Revenue per purchase event |
@@ -143,87 +178,10 @@ All 11 queries are standalone — each one runs independently in BigQuery and is
 | `traffic_source` | Acquisition channel |
 | `country` | User's country |
 
-***
+---
 
 ## ⚙️ How to Reproduce
 
 ### Step 1 — BigQuery
 
-Open BigQuery and run the SQL files in the `sql/` folder. The source dataset is:
-
-```
-funnel-analysis-478313.analysis.funnel_analysis_dataset
-```
-
-All queries use `CAST(MAX(event_name = '...') AS INT64)` for user-level funnel pivoting and `SAFE_DIVIDE()` for null-safe CVR calculations.
-
-### Step 2 — Power BI Connection
-
-1. Open **Power BI Desktop**
-2. **Get Data** → **Google BigQuery**
-3. Expand **Advanced Options** → paste the SQL query into the **SQL Statement** field
-4. Authenticate with your Google account (requires BigQuery read access to the project)
-5. Repeat for each of the 11 queries — each loads as a separate table
-6. Apply DAX measures and build visuals as per the `.pbix` file
-
-### Step 3 — Dashboard Navigation
-
-The report has **3 pages** with navigation buttons at the top:
-
-| Page | What It Shows |
-|---|---|
-| **Funnel Overview** | Total users per stage, stage-to-stage CVR bar chart, cart abandonment KPI |
-| **Segment Analysis** | CVR/Revenue/AOV by device, traffic source, and country; performance tables |
-| **Monthly Performance & Trends** | Month-over-month CVR line chart, purchase volume, stepwise stage rates, time to purchase KPIs |
-
-***
-
-## 📐 Key DAX Measures
-
-```dax
--- Overall Conversion Rate
-Overall CVR % =
-DIVIDE(
-    CALCULATE(COUNTROWS(funnel_summary), funnel_summary[stage] = "purchases"),
-    CALCULATE(COUNTROWS(funnel_summary), funnel_summary[stage] = "product_views")
-)
-
--- Average Order Value
-AOV =
-DIVIDE([Total Revenue], [Total Orders])
-
--- Cart Abandonment Rate
-Cart Abandonment Rate % =
-1 - DIVIDE([Total Purchases], [Total Add to Cart])
-
--- View to Cart Rate
-View to Cart Rate % =
-DIVIDE([Total Add to Cart], [Total Product Views])
-```
-
-***
-
-## 💡 Business Recommendations
-
-| Finding | Recommended Action |
-|---|---|
-| View → Cart drop at 20% | A/B test product page CTAs, improve image quality, add social proof and trust badges |
-| Shipping → Payment drop at 59% | Simplify payment form, add more methods (PayPal, Apple Pay), reduce required fields |
-| Cart abandonment at 64.77% | Implement email cart recovery sequences and exit-intent popups with incentive |
-| Referral highest CVR (8.06%) | Invest in affiliate and partner referral programs |
-| Mobile leads in CVR (7.46%) | Prioritize mobile-first checkout UX and fast page load |
-| January 2021 CVR drop to 5.45% | Plan January-specific promotions to counter post-holiday purchase fatigue |
-
-***
-
-## 👤 Author
-
-**[Md Shafayet Hossen Chowdhury]**  
-Data Analyst | SQL · Power BI · BigQuery  
-📍 Potsdam, Germany  
-🔗 [LinkedIn](https://www.linkedin.com/in/mdshafayet/)·
-
-***
-
-
-This project uses GA4 demo-structured data for portfolio and educational purposes.
+Open BigQuery and run the SQL files from the `sql/` folder. The source dataset is:
