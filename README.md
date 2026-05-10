@@ -224,7 +224,7 @@ All queries use `CAST(MAX(event_name = '...') AS INT64)` for user-level funnel p
 ## 👤 Author
 
 **Md Shafayet Hossen Chowdhury**  
-Data Analyst | SQL · Power BI · BigQuery  
+M.Sc. in Data Science · Data Analyst Enthusiast · SQL · Power BI · BigQuery  
 📍 Potsdam, Germany  
 🔗 [LinkedIn](https://www.linkedin.com/in/mdshafayet/)
 
